@@ -3,11 +3,9 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.js",
   stats: { maxModules: 50, modulesSort: "size" },
-  resolve: {
-    alias: {
-      //   react: "preact/compat",
-      //   "react-dom": "preact/compat",
-    },
+  externals: {
+    react: "react",
+    "react-dom": "react-dom",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
