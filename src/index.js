@@ -5,7 +5,7 @@ import DevTools from "./dev-tools";
 import EditorStateContainer from "./state/editor";
 
 const DEVTOOLS_CLASS_NAME = "__prosemirror-dev-tools__";
-
+console.log("hola 3");
 function createPlace() {
   let place = document.querySelector(`.${DEVTOOLS_CLASS_NAME}`);
 
@@ -33,5 +33,5 @@ function applyDevTools(editorView, props) {
   );
 }
 
-export default applyDevTools;
+// export default applyDevTools;
 export { applyDevTools };

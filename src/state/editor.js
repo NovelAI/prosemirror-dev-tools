@@ -5,6 +5,7 @@ import nanoid from "nanoid";
 import subscribeOnUpdates from "../utils/subscribe-on-updates";
 import findNodeIn, { findNodeInJSON } from "../utils/find-node";
 import getEditorStateClass from "./get-editor-state";
+import { JsonDiffMain } from "./json-diff-main";
 
 const NODE_PICKER_DEFAULT = {
   top: 0,
@@ -168,15 +169,7 @@ export default class EditorStateContainer extends Container {
   constructor(editorView, props) {
     super();
 
-    this.diffWorker =
-      props && props.diffWorker
-        ? import("./json-diff-worker").then(
-            ({ JsonDiffWorker }) => new JsonDiffWorker(props.diffWorker)
-          )
-        : import("./json-diff-main").then(
-            ({ JsonDiffMain }) => new JsonDiffMain()
-          );
-
+    this.diffWorker = new JsonDiffMain();
     this.state = Object.assign({}, this.state, {
       EditorState: getEditorStateClass(props),
       view: editorView,

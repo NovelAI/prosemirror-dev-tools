@@ -25,7 +25,7 @@ const DockContainer = styled("div")({
   fontSize: "13px",
 });
 DockContainer.displayName = "DockContainer";
-
+console.log("counter", 1);
 const CloseButton = styled("button")({
   background: "none",
   border: "none",
@@ -60,17 +60,19 @@ export default function DevToolsExpanded() {
                 deactivatePicker,
                 updateNodePickerPossition,
                 nodePickerSelect,
-              }) => (
-                <NodePicker
-                  nodePicker={nodePicker}
-                  onClose={deactivatePicker}
-                  onMouseMove={updateNodePickerPossition}
-                  onSelect={(target) => {
-                    nodePickerSelect(target);
-                    selectTab(0); // Switch to the "State" tab.
-                  }}
-                />
-              )}
+              }) => {
+                return (
+                  <NodePicker
+                    nodePicker={nodePicker}
+                    onClose={deactivatePicker}
+                    onMouseMove={updateNodePickerPossition}
+                    onSelect={(target) => {
+                      nodePickerSelect(target);
+                      selectTab(0); // Switch to the "State" tab.
+                    }}
+                  />
+                );
+              }}
             </Subscribe>
             <Dock
               position="bottom"
