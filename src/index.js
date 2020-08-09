@@ -31,6 +31,9 @@ function applyDevTools(editorView, props) {
     </Provider>,
     place
   );
+  return () => {
+    return ReactDOM.unmountComponentAtNode(place);
+  };
 }
 
 // export default applyDevTools;
