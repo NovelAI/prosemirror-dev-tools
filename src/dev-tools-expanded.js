@@ -25,7 +25,6 @@ const DockContainer = styled("div")({
   fontSize: "13px",
 });
 DockContainer.displayName = "DockContainer";
-console.log("counter", 1);
 const CloseButton = styled("button")({
   background: "none",
   border: "none",
