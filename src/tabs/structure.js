@@ -126,7 +126,7 @@ export function BlockNodeContent(props) {
             node={childNode}
             bg={props.colors[childNode.type.name]}
             onNodeSelected={props.onNodeSelected}
-            startPos={pos}
+            startPos={pos + 1}
           />
         );
       })}
