@@ -142,7 +142,7 @@ export function BlockNode(props) {
       <BlockNodeView bg={color} onClick={() => props.onNodeSelected({ node })}>
         <Side>{startPos}</Side>
         <Center>{node.type.name}</Center>
-        <Side>{startPos + node.nodeSize - 1}</Side>
+        <Side>{startPos + node.nodeSize}</Side>
       </BlockNodeView>
       <BlockNodeContent
         content={node.content}
