@@ -189,7 +189,7 @@ export default function GraphTab() {
                 <BlockNode
                   colors={nodeColors}
                   node={state.doc}
-                  startPos={0}
+                  startPos={-1}
                   onNodeSelected={structureTabState.selectNode}
                 />
               </GraphWrapper>
