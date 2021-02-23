@@ -1,26 +1,9 @@
 ![prosemirror-dev-tools](/docs/assets/logo.png)
 
-<p align="center">
-  <a href="https://npmjs.org/package/prosemirror-dev-tools">
-    <img src="https://img.shields.io/npm/v/prosemirror-dev-tools.svg" alt="NPM Version">
-  </a>
+This is a monkey patched fork of https://github.com/d4rkr00t/prosemirror-dev-tools which fixed the wrong indexing problem (see this [discussion](https://discuss.prosemirror.net/t/is-there-a-good-way-to-understand-the-pos-that-is-used-all-over/3458/6)).
 
-  <a href="http://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/npm/l/prosemirror-dev-tools.svg" alt="License">
-  </a>
 
-  <a href="https://github.com/d4rkr00t/prosemirror-dev-tools/issues">
-    <img src="https://img.shields.io/github/issues/d4rkr00t/prosemirror-dev-tools.svg" alt="Github Issues">
-  </a>
 
-  <a href="https://travis-ci.org/d4rkr00t/prosemirror-dev-tools">
-    <img src="https://img.shields.io/travis/d4rkr00t/prosemirror-dev-tools.svg" alt="Travis Status">
-  </a>
-
-  <a href="http://commitizen.github.io/cz-cli/">
-    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen Friendly">
-  </a>
-</p>
 
 ## Table of Content
 
@@ -45,7 +28,7 @@
 Install `prosemirror-dev-tools` package from npm:
 
 ```sh
-npm install --save-dev prosemirror-dev-tools
+npm install --save-dev kepta/prosemirror-dev-tools
 ```
 
 Wrap `EditorView` instance in applyDevTools method:
