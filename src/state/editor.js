@@ -2,7 +2,6 @@ import { DOMSerializer } from "prosemirror-model";
 import { Container } from "unstated";
 import { prettyPrint } from "html";
 import nanoid from "nanoid";
-import subscribeOnUpdates from "../utils/subscribe-on-updates";
 import findNodeIn, { findNodeInJSON } from "../utils/find-node";
 import getEditorStateClass from "./get-editor-state";
 import { JsonDiffMain } from "./json-diff-main";
@@ -166,6 +165,60 @@ export default class EditorStateContainer extends Container {
     nodePicker: NODE_PICKER_DEFAULT,
   };
 
+  updateState = (tr, oldState, newState) => {
+    const updatedHistory = updateEditorHistory(
+      this.state.history,
+      this.state.historyRolledBackTo,
+      tr,
+      newState
+    );
+
+    if (oldState && updatedHistory) {
+      const [{ id }] = updatedHistory;
+      const self = this;
+
+      (async () => {
+        const diffWorker = await this.diffWorker;
+
+        const [{ delta: diff }, { delta: selection }] = await Promise.all([
+          diffWorker.diff({
+            a: oldState.doc.toJSON(),
+            b: newState.doc.toJSON(),
+            id,
+          }),
+          diffWorker.diff({
+            a: buildSelection(oldState.selection),
+            b: buildSelection(newState.selection),
+            id,
+          }),
+        ]);
+
+        const history = updatedHistory.map((item) => {
+          return item.id === id
+            ? Object.assign({}, item, { diff, diffPending: false, selection })
+            : item;
+        });
+
+        self.setState({
+          history,
+        });
+      })();
+    }
+
+    this.setState({
+      state: newState,
+      nodeColors: buildColors(newState.schema),
+      activeMarks: getActiveMarks(newState),
+      history: updatedHistory || this.state.history,
+      selectedHistoryItem: updatedHistory
+        ? 0
+        : this.state.selectedHistoryItem,
+      historyRolledBackTo: updatedHistory
+        ? false
+        : this.state.historyRolledBackTo,
+    });
+  }
+
   constructor(editorView, props) {
     super();
 
@@ -178,59 +231,6 @@ export default class EditorStateContainer extends Container {
       history: [{ state: editorView.state, timestamp: Date.now() }],
     });
 
-    subscribeOnUpdates(editorView, (tr, oldState, newState) => {
-      const updatedHistory = updateEditorHistory(
-        this.state.history,
-        this.state.historyRolledBackTo,
-        tr,
-        newState
-      );
-
-      if (oldState && updatedHistory) {
-        const [{ id }] = updatedHistory;
-        const self = this;
-
-        (async () => {
-          const diffWorker = await this.diffWorker;
-
-          const [{ delta: diff }, { delta: selection }] = await Promise.all([
-            diffWorker.diff({
-              a: oldState.doc.toJSON(),
-              b: newState.doc.toJSON(),
-              id,
-            }),
-            diffWorker.diff({
-              a: buildSelection(oldState.selection),
-              b: buildSelection(newState.selection),
-              id,
-            }),
-          ]);
-
-          const history = updatedHistory.map((item) => {
-            return item.id === id
-              ? Object.assign({}, item, { diff, diffPending: false, selection })
-              : item;
-          });
-
-          self.setState({
-            history,
-          });
-        })();
-      }
-
-      this.setState({
-        state: newState,
-        nodeColors: buildColors(newState.schema),
-        activeMarks: getActiveMarks(newState),
-        history: updatedHistory || this.state.history,
-        selectedHistoryItem: updatedHistory
-          ? 0
-          : this.state.selectedHistoryItem,
-        historyRolledBackTo: updatedHistory
-          ? false
-          : this.state.historyRolledBackTo,
-      });
-    });
   }
 
   activatePicker = () => {

@@ -2,16 +2,18 @@ const path = require("path");
 
 module.exports = {
   entry: "./src/index.js",
-  stats: { maxModules: 50, modulesSort: "size" },
-  externals: {
-    react: "react",
-    "react-dom": "react-dom",
+  experiments: {
+    outputModule:true
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    library: "devtools",
-    libraryTarget: "umd",
+    library: {
+      type: "commonjs2",
+    }
+  },
+  optimization: {
+    minimize: false
   },
   module: {
     rules: [

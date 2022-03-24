@@ -1,9 +1,6 @@
 ![prosemirror-dev-tools](/docs/assets/logo.png)
 
-This is a monkey patched fork of https://github.com/d4rkr00t/prosemirror-dev-tools which fixed the wrong indexing problem (see this [discussion](https://discuss.prosemirror.net/t/is-there-a-good-way-to-understand-the-pos-that-is-used-all-over/3458/6)).
-
-
-
+This is a monkey patched fork of <https://github.com/d4rkr00t/prosemirror-dev-tools> which fixed the wrong indexing problem (see this [discussion](https://discuss.prosemirror.net/t/is-there-a-good-way-to-understand-the-pos-that-is-used-all-over/3458/6)).
 
 ## Table of Content
 
@@ -25,10 +22,10 @@ This is a monkey patched fork of https://github.com/d4rkr00t/prosemirror-dev-too
 
 ### NPM Way
 
-Install `prosemirror-dev-tools` package from npm:
+Install `prosemirror-dev-tools` package from GitHub:
 
 ```sh
-npm install --save-dev kepta/prosemirror-dev-tools
+npm install --save-dev https://github.com/NovelAI/prosemirror-dev-tools
 ```
 
 Wrap `EditorView` instance in applyDevTools method:
@@ -38,8 +35,11 @@ import applyDevTools from "prosemirror-dev-tools";
 
 const view = new EditorView /*...*/();
 
-applyDevTools(view);
+const updateDevTools = applyDevTools(view);
+
 ```
+
+Then call `updateDevTools` inside `dispatchTransaction`.
 
 ## Features
 
@@ -98,4 +98,4 @@ about it [here](http://commitizen.github.io/cz-cli/).
 
 ## License
 
-- **MIT** : http://opensource.org/licenses/MIT
+- **MIT** : <http://opensource.org/licenses/MIT>
