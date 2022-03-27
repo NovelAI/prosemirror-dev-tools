@@ -74,7 +74,7 @@ export default function DevToolsExpanded() {
               }}
             </Subscribe>
             <Dock
-              position="bottom"
+              position="right"
               dimMode="none"
               isVisible
               defaultSize={defaultSize}
