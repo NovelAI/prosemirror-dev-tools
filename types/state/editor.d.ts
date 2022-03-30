@@ -11,7 +11,7 @@ export function buildSelection(selection: any): {
     to: any;
 };
 export function createHistoryEntry(editorState: any): {
-    id: any;
+    id: string;
     state: any;
     timestamp: number;
     diffPending: boolean;
