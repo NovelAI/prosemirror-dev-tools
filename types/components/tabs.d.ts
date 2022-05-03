@@ -1,13 +1,13 @@
 export const TabList: import("@emotion/styled").StyledComponent<{
-    theme?: import(".pnpm/@emotion+react@11.8.2_01d56d277bbc737f671dd85124c7a696/node_modules/@emotion/react").Theme;
+    theme?: import(".pnpm/@emotion+react@11.9.0_b1dff00440c6362a4022b855bf7732d0/node_modules/@emotion/react").Theme;
     as?: React.ElementType<any>;
 }, React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
 export const TabsStled: import("@emotion/styled").StyledComponent<{
-    theme?: import(".pnpm/@emotion+react@11.8.2_01d56d277bbc737f671dd85124c7a696/node_modules/@emotion/react").Theme;
+    theme?: import(".pnpm/@emotion+react@11.9.0_b1dff00440c6362a4022b855bf7732d0/node_modules/@emotion/react").Theme;
     as?: React.ElementType<any>;
 }, React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
 export const TabStyled: import("@emotion/styled").StyledComponent<{
-    theme?: import(".pnpm/@emotion+react@11.8.2_01d56d277bbc737f671dd85124c7a696/node_modules/@emotion/react").Theme;
+    theme?: import(".pnpm/@emotion+react@11.9.0_b1dff00440c6362a4022b855bf7732d0/node_modules/@emotion/react").Theme;
     as?: React.ElementType<any>;
 }, React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
 export class Tab extends React.Component<any, any, any> {
@@ -21,7 +21,7 @@ export namespace Tab {
     }
 }
 export const TabPanelStyled: import("@emotion/styled").StyledComponent<{
-    theme?: import(".pnpm/@emotion+react@11.8.2_01d56d277bbc737f671dd85124c7a696/node_modules/@emotion/react").Theme;
+    theme?: import(".pnpm/@emotion+react@11.9.0_b1dff00440c6362a4022b855bf7732d0/node_modules/@emotion/react").Theme;
     as?: React.ElementType<any>;
 }, React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
 export class TabPanel extends React.Component<any, any, any> {
