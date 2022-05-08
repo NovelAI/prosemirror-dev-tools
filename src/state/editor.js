@@ -309,7 +309,9 @@ export default class EditorStateContainer extends Container {
 
     this.setState({ snapshots });
 
-    window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots));
+    window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots, (k, v) => {
+      return typeof v === 'bigint' ? v.toString() : v
+    }));
   };
 
   loadSnapshot = (snapshot) => {
@@ -336,7 +338,9 @@ export default class EditorStateContainer extends Container {
     const snapshotIndex = snapshots.indexOf(snapshot);
     snapshots.splice(snapshotIndex, 1);
     this.setState({ snapshots: [].concat(snapshots) });
-    window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots));
+    window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots, (k, v) => {
+      return typeof v === 'bigint' ? v.toString() : v
+    }));
   };
 
   logNodeFromJSON = ({ doc, node }) => {

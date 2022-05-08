@@ -63,7 +63,9 @@ function stringifyAndShrink(val) {
     return "null";
   }
 
-  const str = JSON.stringify(val);
+  const str = JSON.stringify(val, (k, v) => {
+    return typeof v === 'bigint' ? v.toString() : v
+  })
   if (typeof str === "undefined") {
     return "undefined";
   }
