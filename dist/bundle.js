@@ -3397,7 +3397,7 @@ module.exports = Color;
 
 /***/ }),
 
-/***/ 4662:
+/***/ 9125:
 /***/ ((module, exports, __webpack_require__) => {
 
 
@@ -12158,10 +12158,10 @@ var react_namespaceObject = /*#__PURE__*/__webpack_require__.t(react, 2);
 var react_dom = __webpack_require__(9103);
 // EXTERNAL MODULE: ./node_modules/.pnpm/react-dom@18.1.0_react@18.1.0/node_modules/react-dom/client.js
 var client = __webpack_require__(2628);
-// EXTERNAL MODULE: ./node_modules/.pnpm/create-react-context@0.1.6_prop-types@15.8.1+react@18.1.0/node_modules/create-react-context/lib/index.js
-var lib = __webpack_require__(4662);
+// EXTERNAL MODULE: ./node_modules/.pnpm/create-react-context@0.1.6_m2ik3obrudsrebznnhij42e2gq/node_modules/create-react-context/lib/index.js
+var lib = __webpack_require__(9125);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/unstated@2.1.1_prop-types@15.8.1+react@18.1.0/node_modules/unstated/lib/unstated.es.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/unstated@2.1.1_m2ik3obrudsrebznnhij42e2gq/node_modules/unstated/lib/unstated.es.js
 
 
 
@@ -14132,7 +14132,7 @@ var emotion_serialize_browser_esm_serializeStyles = function serializeStyles(arg
 
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@emotion+react@11.9.0_b1dff00440c6362a4022b855bf7732d0/node_modules/@emotion/react/dist/emotion-element-cbed451f.browser.esm.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@emotion+react@11.9.0_vo2jjad77qhcnqsjaya6yvztwi/node_modules/@emotion/react/dist/emotion-element-cbed451f.browser.esm.js
 
 
 
@@ -14400,7 +14400,7 @@ var emotion_utils_browser_esm_insertStyles = function insertStyles(cache, serial
 
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@emotion+styled@11.8.1_0015d176f5ada7992d543f900c4cdd31/node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@emotion+styled@11.8.1_yq3qpuqggfy3nrm5nszejzd6ky/node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
 
 
 
@@ -14577,7 +14577,7 @@ var createStyled = function createStyled(tag, options) {
 
 /* harmony default export */ const emotion_styled_base_browser_esm = (createStyled);
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@emotion+styled@11.8.1_0015d176f5ada7992d543f900c4cdd31/node_modules/@emotion/styled/dist/emotion-styled.browser.esm.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@emotion+styled@11.8.1_yq3qpuqggfy3nrm5nszejzd6ky/node_modules/@emotion/styled/dist/emotion-styled.browser.esm.js
 
 
 
@@ -14879,7 +14879,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./node_modules/.pnpm/lodash.debounce@4.0.8/node_modules/lodash.debounce/index.js
 var lodash_debounce = __webpack_require__(6763);
 var lodash_debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-dock@0.5.1_00f1fa741ba9620b08a0362666d2063b/node_modules/react-dock/lib/esm/autoprefix.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-dock@0.5.1_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-dock/lib/esm/autoprefix.js
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -14902,7 +14902,7 @@ function autoprefix(style) {
     return vendorSpecificProperties.indexOf(key) !== -1 ? _objectSpread(_objectSpread({}, obj), prefixProp(key, style[key])) : obj;
   }, style);
 }
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-dock@0.5.1_00f1fa741ba9620b08a0362666d2063b/node_modules/react-dock/lib/esm/Dock.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-dock@0.5.1_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-dock/lib/esm/Dock.js
 
 
 
@@ -19175,7 +19175,7 @@ function doc(options) {
 
 // EXTERNAL MODULE: ./node_modules/.pnpm/html@1.0.0/node_modules/html/lib/html.js
 var html = __webpack_require__(1762);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/nanoid@3.3.3/node_modules/nanoid/index.browser.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/nanoid@3.3.4/node_modules/nanoid/index.browser.js
 
 let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 let customRandom = (alphabet, defaultSize, getRandom) => {
@@ -22581,7 +22581,9 @@ var EditorStateContainer = /*#__PURE__*/function (_Container) {
         snapshots: snapshots
       });
 
-      window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots));
+      window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots, function (k, v) {
+        return typeof v === 'bigint' ? v.toString() : v;
+      }));
     });
 
     editor_defineProperty(editor_assertThisInitialized(_this), "loadSnapshot", function (snapshot) {
@@ -22611,7 +22613,9 @@ var EditorStateContainer = /*#__PURE__*/function (_Container) {
         snapshots: [].concat(snapshots)
       });
 
-      window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots));
+      window.localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(snapshots, function (k, v) {
+        return typeof v === 'bigint' ? v.toString() : v;
+      }));
     });
 
     editor_defineProperty(editor_assertThisInitialized(_this), "logNodeFromJSON", function (_ref2) {
@@ -22870,7 +22874,7 @@ function nonIterableRest_nonIterableRest() {
 function slicedToArray_slicedToArray(arr, i) {
   return arrayWithHoles_arrayWithHoles(arr) || iterableToArrayLimit_iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || nonIterableRest_nonIterableRest();
 }
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/objType.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/objType.js
 function objType(obj) {
   var type = Object.prototype.toString.call(obj).slice(8, -1);
 
@@ -22885,7 +22889,7 @@ function objType(obj) {
 
   return type;
 }
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONArrow.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONArrow.js
 
 
 
@@ -22912,7 +22916,7 @@ JSONArrow.defaultProps = {
   arrowStyle: 'single'
 };
 /* harmony default export */ const esm_JSONArrow = (JSONArrow);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/getCollectionEntries.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/getCollectionEntries.js
 
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = getCollectionEntries_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
@@ -23078,7 +23082,7 @@ function getCollectionEntries(type, collection, sortObjectKeys, limit) {
 
   return limitedEntries;
 }
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/ItemRange.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/ItemRange.js
 
 
 
@@ -23153,7 +23157,7 @@ defineProperty_defineProperty(ItemRange, "propTypes", {
 });
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONNestedNode.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONNestedNode.js
 
 
 
@@ -23333,7 +23337,7 @@ defineProperty_defineProperty(JSONNestedNode, "defaultProps", {
 });
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONObjectNode.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONObjectNode.js
 
 
 var _excluded = ["data"];
@@ -23367,7 +23371,7 @@ JSONObjectNode.propTypes = {
   nodeType: (prop_types_default()).string.isRequired
 };
 /* harmony default export */ const esm_JSONObjectNode = (JSONObjectNode);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONArrayNode.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONArrayNode.js
 
 
 var JSONArrayNode_excluded = ["data"];
@@ -23399,7 +23403,7 @@ JSONArrayNode.propTypes = {
   data: (prop_types_default()).array
 };
 /* harmony default export */ const esm_JSONArrayNode = (JSONArrayNode);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONIterableNode.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONIterableNode.js
 
 
 function JSONIterableNode_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = JSONIterableNode_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
@@ -23457,7 +23461,7 @@ var JSONIterableNode = function JSONIterableNode(_ref) {
 };
 
 /* harmony default export */ const esm_JSONIterableNode = (JSONIterableNode);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONValueNode.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONValueNode.js
 
 
 
@@ -23486,7 +23490,7 @@ JSONValueNode.propTypes = {
   valueGetter: (prop_types_default()).func
 };
 /* harmony default export */ const esm_JSONValueNode = (JSONValueNode);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/JSONNode.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/JSONNode.js
 
 
 
@@ -23930,7 +23934,7 @@ var invertTheme = function invertTheme(theme) {
   return theme;
 };
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/themes/solarized.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/themes/solarized.js
 /* harmony default export */ const solarized = ({
   scheme: 'solarized',
   author: 'ethan schoonover (http://ethanschoonover.com/solarized)',
@@ -23951,7 +23955,7 @@ var invertTheme = function invertTheme(theme) {
   base0E: '#6c71c4',
   base0F: '#d33682'
 });
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/createStylingFromTheme.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/createStylingFromTheme.js
 
 
 function createStylingFromTheme_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -24150,7 +24154,7 @@ var getDefaultThemeStyling = function getDefaultThemeStyling(theme) {
 /* harmony default export */ const createStylingFromTheme = (createStyling(getDefaultThemeStyling, {
   defaultBase16: solarized
 }));
-;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_00f1fa741ba9620b08a0362666d2063b/node_modules/react-json-tree/lib/esm/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/react-json-tree@0.16.2_jf7exnlqiayjnziahgkymlrxlu/node_modules/react-json-tree/lib/esm/index.js
 
 
 
@@ -24817,7 +24821,9 @@ function stringifyAndShrink(val) {
     return "null";
   }
 
-  var str = JSON.stringify(val);
+  var str = JSON.stringify(val, function (k, v) {
+    return typeof v === 'bigint' ? v.toString() : v;
+  });
 
   if (typeof str === "undefined") {
     return "undefined";

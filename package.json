@@ -49,7 +49,7 @@
     "prosemirror-model": "^1.16.1",
     "prosemirror-schema-basic": "*",
     "prosemirror-state": "^1.3.4",
-    "prosemirror-view": "github:NovelAI/prosemirror-view#force-plaintext",
+    "prosemirror-view": "github:NovelAI/prosemirror-view#custom",
     "react": "^18.1.0",
     "react-dock": "^0.5.1",
     "react-dom": "^18.1.0",
